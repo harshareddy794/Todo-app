@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-app</title>
+     <!-- Font Awesome JS -->
+     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="todo">
+        <h1>To-Do list</h1>
+        <form action="/add/todo" method="post">
+            <input type="text" name="todo" placeholder="Add New Todo">
+            <input type="submit" value="Add Todo">
+        </form>
+        <ul>
+            <% todos.forEach(function(todo){ %>
+                <% if(!todo.finished){ %>
+                    <li><span><a href="/remove/<%= todo._id %>">Done</a></span></a> <%= todo.todo %> </li>
+                <% } %>
+            <%  }) %>
+        </ul>
+    </div>
+
+    <div class="todo">
+        <h1>Finished tasks</h1>
+        <ul style="text-align: center;">
+            <% todos.forEach(function(todo){ %>
+                <% if(todo.finished){ %>
+                    <li><%= todo.todo %> </li>
+                <% } %>
+            <%  }) %>
+        </ul>
+    </div>
+
+
+</body>
+</html>
